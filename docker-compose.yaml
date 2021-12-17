@@ -2,8 +2,6 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.14
-    ports:
-      - "4444:4444"
   chrome:
     image: selenium/node-chrome:3.14
     shm_size: '1gb'
@@ -28,7 +26,7 @@ services:
       - HUB_HOST=hub
       - MODULE=search-module.xml
     volumes:
-      - ./search-result1:/usr/share/testing/test-output
+      - ./output/search-result1:/usr/share/testing/test-output
   search-module2:
     image: alo453/selenium-docker
     depends_on:
@@ -39,7 +37,7 @@ services:
       - HUB_HOST=hub
       - MODULE=search-module.xml
     volumes:
-      - ./search-result2:/usr/share/testing/test-output
+      - ./output/search-result2:/usr/share/testing/test-output
   book-flight-module1:
     image: alo453/selenium-docker
     depends_on:
@@ -50,7 +48,7 @@ services:
       - HUB_HOST=hub
       - MODULE=book-flight-module.xml
     volumes:
-      - ./book-flight-result1:/usr/share/testing/test-output
+      - ./output/book-flight-result1:/usr/share/testing/test-output
   book-flight-module2:
     image: alo453/selenium-docker
     depends_on:
@@ -61,4 +59,4 @@ services:
       - HUB_HOST=hub
       - MODULE=book-flight-module.xml
     volumes:
-      - ./book-flight-result2:/usr/share/testing/test-output
+      - ./output/book-flight-result2:/usr/share/testing/test-output
